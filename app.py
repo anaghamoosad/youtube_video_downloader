@@ -12,9 +12,6 @@ app.config['DEBUG'] = True
 
 #turn the flask app into a socketio app
 socketio = SocketIO(app, async_mode=None, logger=True, engineio_logger=True)
-
-
-
 file_size = 0
 
 @app.route("/", methods=['GET', 'POST']) 
@@ -22,29 +19,27 @@ def index():
     if request.method == "POST":
         if request.form.get('download_video') == 'Download Video':
             yt_url=request.form["url"]
-            result= Download(yt_url) 
+            result= DownloadVideo(yt_url) 
         elif  request.form.get('download_audio') == 'Download Audio':
             yt_url=request.form["url"]
             result= DownloadAudio(yt_url) 
               
     return render_template("index.html")
-  
+
+# get progress details from download
 def progress_function(stream, chunk, bytes_remaining):
     progress_perct=round((1 -bytes_remaining/stream.filesize)*100, 2)
     print(progress_perct, '% done...')  
-    socketio.emit('test_response', {'data':int(progress_perct)})
+    socketio.emit('progress_perct', {'data':int(progress_perct)})  
     
-   
-
-    
-
 #Grabs the file path for Download
 def file_path():
     home = os.path.expanduser('~')
     download_path = os.path.join(home, 'Downloads')
     return download_path
 
-def Download(link):
+
+def DownloadVideo(link):
     print("Your video will be saved to: {}".format(file_path()))
     #Input 
  
@@ -56,7 +51,7 @@ def Download(link):
         video = YouTube(link, on_progress_callback=progress_function)
     except:
         print("ERROR. Check your:n  -connectionn  -url is a YouTube urlnnTry again.")
-        redo = Download(link)
+        redo = DownloadVideo(link)
 
     #Get the first video type - usually the best quality.
     video_type = video.streams.filter(progressive = True, file_extension = "mp4").first()
@@ -74,8 +69,7 @@ def Download(link):
  
 def DownloadAudio(link):
     
-    print("Your audio will be saved to: {}".format(file_path()))
-    #Input 
+    print("Your audio will be saved to: {}".format(file_path())) 
     print(link)
     print ("Accessing YouTube URL...")
 
@@ -106,21 +100,14 @@ def DownloadAudio(link):
     new_file = base + '.mp3'
     os.rename(out_file, new_file)
 
- 
- 
 
 @socketio.on('connect')
-def test_connect():
-    # need visibility of the global thread object
-    
+def test_connect():    
     print('Client connected')
-
- 
 
 @socketio.on('disconnect')
 def test_disconnect():
     print('Client disconnected')
-
 
 if __name__ == '__main__':
     socketio.run(app)
