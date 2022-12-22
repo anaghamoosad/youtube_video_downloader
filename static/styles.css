@@ -1,0 +1,43 @@
+ 
+  body {
+    background-color: #ffff;
+  }
+
+  .navbar {
+    min-height: 100px;
+    background-color:#673147;
+  }
+ 
+  .btn-primary{
+    color: #ffff;
+    background-color: #770737;
+    
+  }
+
+  .outline {
+    background-color: transparent;
+        transition: all .25s;
+}
+
+.btn-primary.outline {
+  color: black !important;
+  background-color: #A95C68;
+  border-color: black !important;
+    
+  }
+     
+ 
+ 
+.btn-primary.outline:hover{
+  color: #ffff!important;
+  background-color: #770737!important;
+}
+
+  .d-flex{
+    height:300px;
+  }
+  
+  .navbar-header{
+    font-family: 'arial', cursive;
+    color: #FFFFFF
+  } 

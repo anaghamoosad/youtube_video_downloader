@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Youtube Audio and Video Downloader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">    
+<script class="cssdeck" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}">
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+ 
+</head>
+<body>
+    <nav class="navbar justify-content-center">
+        <span class="navbar-header h1 ">Youtube Video and Audio Downloader</span>
+ 
+    </nav>
+    <div class="d-flex align-items-center justify-content-center">
+        <form method="post" action="/">
+            <div class="row">
+                <div class="input-group mb-3">            
+                   <input type="text" name="url" id="typeText" class="form-control" placeholder="Enter youtube url" />
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <input type="submit" value="Download Video" name="download_video" class="btn btn-primary outline"  /> 
+                    </div>
+                    <div class="col-4">
+                        <input type="submit" value="Download Audio" name="download_audio" class="btn btn-primary outline"  /> 
+                    </div>
+                </div>
+                <div class="mt-4 row justify-content-center">  
+                    <div class="progress">
+                        <div id = "newprog" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                        <span id = "proglbl" class="progress-bar-label">0%</span>
+                    </div>  
+                </div>         
+            </div> 
+    </div>   
+  
+
+  
+ 
+ 
+</body>
+</html>
