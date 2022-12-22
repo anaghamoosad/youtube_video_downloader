@@ -25,24 +25,19 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-4">
-                        <input type="submit" value="Download Video" name="download_video" class="btn btn-primary outline"  /> 
+                        <input type="submit" id ="video" value="Download Video" name="download_video" class="btn btn-primary outline"  /> 
                     </div>
                     <div class="col-4">
-                        <input type="submit" value="Download Audio" name="download_audio" class="btn btn-primary outline"  /> 
+                        <input type="submit" id ="audio" value="Download Audio" name="download_audio" class="btn btn-primary outline"  /> 
                     </div>
                 </div>
                 <div class="mt-4 row justify-content-center">  
-                    <div class="progress">
-                        <div id = "newprog" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                    <div id= "progressbars" class="progress">
+                        <div id = "newprog" class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 1%"></div>
                         <span id = "proglbl" class="progress-bar-label">0%</span>
                     </div>  
                 </div>         
             </div> 
     </div>   
-  
-
-  
- 
- 
-</body>
+  </body>
 </html>

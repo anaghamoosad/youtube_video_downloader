@@ -41,3 +41,10 @@
     font-family: 'arial', cursive;
     color: #FFFFFF
   } 
+
+  .progress{
+   visibility: hidden
+  }
+
+
+     

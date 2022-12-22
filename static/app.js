@@ -10,10 +10,14 @@ $(document).ready(function() {
 
 
         if (msg.data==100) {
-            element2.style.width==100;
+            element2.style.width=100;
+            document.getElementById("video").onclick = function() {
+                document.getElementById("progressbars").style.visibility= "hidden";
+            }
+            
         } 
         if (msg.data==100) {
-            element3.style.width==100;
+            element3.style.width=100;
         } 
         else {
                     
@@ -23,4 +27,10 @@ $(document).ready(function() {
     }
     })
 
+    document.getElementById("video").onclick = function() {
+        document.getElementById("progressbars").style.visibility= "visible";
+    }
+     
+
 });
+ 
