@@ -62,7 +62,7 @@
 } 
 
 .progress{
-  visibility: hidden
+  visibility: hidden;
 }
 
 .form-control:focus {
@@ -71,5 +71,12 @@
   border-color: #af1055cf;
   outline: 0;
   box-shadow: 0 0 0 0.2rem #d84a88cf;
+}
+
+.flash-msg{
+  color:#084b08;
+  font-size: large;
+  font-style: bold; 
+
 }
      
