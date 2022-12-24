@@ -17,12 +17,17 @@ file_size = 0
 @app.route("/", methods=['GET', 'POST']) 
 def index():
     if request.method == "POST":
+        print("Entered flask Application!!!!")
         if request.form.get('download_video') == 'Download Video':
             yt_url=request.form["url"]
+            print("Url",yt_url)
+            print("Entered flask Application!!!!")
             result= DownloadVideo(yt_url) 
+            flash("Video Downloaded Successfully!")  
         elif  request.form.get('download_audio') == 'Download Audio':
             yt_url=request.form["url"]
             result= DownloadAudio(yt_url) 
+            flash("Audio Downloaded Successfully!")  
               
     return render_template("index.html")
 
@@ -109,5 +114,7 @@ def test_connect():
 def test_disconnect():
     print('Client disconnected')
 
+
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app,host='0.0.0.0',port='8000')
+        
